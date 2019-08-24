@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="com.cqupt.zyx.Dao.OrderDao">
+    <resultMap id="orderMap" type="Order">
+        <id property="oid" column="oid"/>
+        <result property="orderTime" column="orderTime"/>
+        <result property="totalPrice" column="totalPrice"/>
+        <result property="status" column="status"/>
+        <collection property="products" column="oid" ofType="SimpleProduct" select="getProductsList" fetchType="eager"/>
+    </resultMap>
+    <resultMap id="PageMap" type="Page">
+        <collection property="data" ofType="SimpleOrder" autoMapping="true">
+        </collection>
+    </resultMap>    <select id="getOrdersByPage" resultMap="PageMap">
+        select oid,orderTime,totalPrice,status from `order`
+        <where>
+            <if test="filter.endTime != null">
+                time &lt; #{filter.endTime},
+            </if>
+            <if test="filter.startTime != null">
+                time &gt; #{filter.startTime}
+            </if>
+        </where>
+    </select>
+
+    <select id="getSpecificOrder" resultMap="orderMap">
+        select * from `order` where oid = #{oid};
+    </select>
+    <select id="getProductsList" resultType="SimpleProduct">
+        select title,price,pic,product.pid,category,quantity from product join order_product on order_product.oid = #{oid} and order_product.pid = product.pid
+    </select>
+    <update id="delivery" >
+        update `order` set status = "InDistribution" where oid = #{oid};
+    </update>
+</mapper>

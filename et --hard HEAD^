@@ -1,0 +1,35 @@
+[33mcommit 54d19f10021185626b614ad1869a2fed6547fdef[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: victor <943382615@qq.com>
+Date:   Tue Aug 13 13:31:43 2019 +0800
+
+    添加了库存和订单转态
+
+[33mcommit 6f9706d84197df7795728c56df08db59c2363b2c[m
+Author: victor <943382615@qq.com>
+Date:   Tue Aug 13 12:14:53 2019 +0800
+
+    基本完成了后台管理
+
+[33mcommit 06bc2ffad89957931e8f0039739be37eb194e244[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: victor <943382615@qq.com>
+Date:   Mon Aug 12 21:24:11 2019 +0800
+
+    基本完成后台管理接口
+
+[33mcommit ecb98580b727003e216a97620fbebbc1bd960c2e[m
+Author: victor <943382615@qq.com>
+Date:   Sat Aug 10 22:50:39 2019 +0800
+
+    完成了商品模块
+
+[33mcommit f54cf6f3c5a98223731ce9bffff2317ac239119d[m
+Author: victor <943382615@qq.com>
+Date:   Fri Aug 9 21:55:10 2019 +0800
+
+    添加了登录
+
+[33mcommit c54c2bf4f161c5b5998f0a8b23783d20a204310c[m
+Author: victor <943382615@qq.com>
+Date:   Thu Aug 8 22:00:00 2019 +0800
+
+    后台管理的接口

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="com.cqupt.zyx.Dao.GoodsDao">
+    <resultMap id="PageMap" type="Page">
+        <collection property="data" ofType="SimpleProduct" autoMapping="true">
+        </collection>
+    </resultMap>
+    <select id="getGoodsByPage" resultMap="PageMap">
+        select * from product
+        <where>
+         <if test="filter.category != null">
+          category = #{filter.category}
+        </if>
+        </where>
+    </select>
+    <select id="getSpecificGoods" resultType="Product">
+        select * from product where pid = #{pid};
+    </select>
+
+    <update id="updateGoods" parameterType="Product">
+        update product
+        <set>
+              <if test="price != null">
+                  price = #{price},
+              </if>
+              <if test="pic != null">
+                  pic = #{pic},
+              </if>
+              <if test="category != null">
+                  category = #{category},
+              </if>
+              <if test="weight != null">
+                  weight =#{weight},
+              </if>
+              <if test="title != null">
+                  title = #{title}
+              </if>
+        </set>
+        where pid = #{pid}
+    </update>
+    <insert id="addGoods" parameterType="Product" >
+        insert into product(title,price,pic,category,description,weight,inventory)values(#{title},#{price},#{pic},#{category},#{description},#{weight},#{inventory})
+    </insert>
+
+    <update id="setInventory" parameterType="Inventory">
+        update product set inventory = #{inventory} where pid = #{pid};
+    </update>
+</mapper>
